@@ -1,0 +1,76 @@
+﻿@using CorrectCar.Models
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6 ">
+            <h2 class="text-muted"> Lista produse </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" asp-action="Upsert" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Adaugare Produs
+            </a>
+        </div>
+
+    </div>
+
+    <br />
+
+    <table class="table table-hover table-striped " style="width:100%">
+        <thead>
+            <tr class="text-center">
+                <th>
+                    Marca 
+                </th>
+                 <th>
+                    Model
+                </th>
+                <th>
+                    Pret
+                </th>
+                <th>
+
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr class="text-center">
+                    <td width="25%">
+                        @obj.Marca
+                    </td>
+                     <td width="25%">
+                        @obj.Model
+                    </td>
+                    <td width="25%">
+                        @obj.Pret
+                    </td>
+                    <th width="25%">
+                        <div class="d-flex justify-content-center">
+                            <div class="col-3">
+                                <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.Id" class="btn">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </div>
+                            <div class="col-3">
+                                <a onClick="Delete('/Admin/Product/Delete?id=@obj.Id')" class="btn"><i class="bi bi-trash"></i></a>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+@section Scripts{
+    <script src="~/js/product.js"></script>
+
+}

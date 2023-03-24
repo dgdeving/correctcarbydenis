@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CorrectCar</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <link rel="stylesheet" href="~/CorrectCar.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
+
+</head>
+<body >
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary ">
+            <div class="container-fluid">
+
+                <img src="/images/logo/Logo3-.png" style="width: 12% !important; " class="navbar-brand p-0" />
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse me-auto">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <li class="nav-item">
+                            <a class="nav-link" style="color:gold" asp-area="" asp-controller="Home" asp-action="Index">Garaj</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Content Management</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Admin Portal</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <partial name="_Notifications" />
+            <br><br>
+            @RenderBody()
+        </main>
+    </div>
+
+<footer class="footer bg-primary fixed-bottom " >
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-sm-12 col-md-auto text-center text-md-left">
+        <div style="color:gold">&copy; CorrectCar by Denis</div>
+      </div>
+      <div class="col-sm-12 col-md-auto mt-3 mt-sm-0 text-center text-md-left">
+        <a asp-area="" asp-controller="Home" asp-action="Privacy" style="text-decoration: none;">Politică de confidențialitate</a>
+        <a asp-area="" asp-controller="Home" asp-action="Privacy" style="text-decoration: none;">Termeni si condiții</a>
+      </div>
+      <div class="col-sm-12 col-md-auto text-center text-md-right">
+        <partial name="_LoginPartial" />
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/tcjsy6xc8gej5dfe9mqvgtm7uyq4jevebi2vaqw8o0vcr60h/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

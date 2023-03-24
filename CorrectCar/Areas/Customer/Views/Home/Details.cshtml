@@ -1,0 +1,129 @@
+﻿@using CorrectCar.Models.ViewModels
+@model ProductVM
+
+<style>
+
+    .carousel-inner img {
+
+      max-height: 82vh;
+      object-fit: contain;
+
+    }
+
+    .card-text img{
+        filter: invert(1);
+    }
+
+
+}
+
+
+</style>
+
+<div id="carouselExampleControls" class="carousel slide mt-4 " data-ride="carousel">
+    <div class="carousel-inner">
+
+        @foreach (ImageURL image in Model.ImagesList)
+        {
+            //one of the images must be active, check for the first one
+            if (Model.ImagesList[0] == image)
+            {
+                <div class="carousel-item active">
+                    <img class="d-block  mx-auto" src="@image.ImageUrl">
+                </div>
+            }
+            else
+            {
+
+                <div class="carousel-item">
+                    <img class="d-block  mx-auto" src="@image.ImageUrl">
+                </div>
+            }
+        }
+    </div>
+    <a class="carousel-control-prev" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only"></span>
+    </a>
+    <a class="carousel-control-next" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only"></span>
+    </a>
+</div>
+
+<div class="card mt-3 mb-3">
+    <div class="card-body">
+        <div class="card-text">
+            <div class="row">
+                <div class="col-6 d-flex justify-content-start" >
+                    <h2 >@Model.Product.Marca @Model.Product.Model</h2>
+                </div>
+                <div class="col-6 d-flex  justify-content-end">
+                    <h2 style="color:gold" >@string.Format("{0:N2}", Model.Product.Pret) €</h2>
+                </div>
+            </div>
+
+            <div class="col-12 mt-3">
+                <img src="/images/icons/mileage-icon.png" style="width: 3% !important"> Rulaj : <strong style="color: gold;">@Model.Product.Rulaj</strong> Km
+            </div>
+            <div class="col-12 mt-3">
+                <img src="/images/icons/date-icon.png" style="width: 3% !important"> An de fabricatie : <strong style="color: gold;">@Model.Product.AnFabricatie</strong>
+            </div>
+            <div class="col-12 mt-3">
+                <img src="/images/icons/engineSize-icon.png" style="width: 3% !important"> Capacitate Cilindrica : <strong style="color: gold;">@Model.Product.CapacitateMotor</strong> cm<sup>3
+            </div>
+            <div class="col-12 mt-3">
+                <img src="/images/icons/hp-icon.png" style="width: 3% !important"> Putere Motor : <strong style="color: gold;">@Model.Product.Putere</strong> hp
+            </div>
+            <div class="col-12 mt-3">
+                <img src="/images/icons/sportsCar-icon.png" style="width: 3% !important"> Tip de caroserie : @Model.Product.Caroserie
+            </div>
+            <div class="col-12 mt-3">
+                <img src="/images/icons/gearbox-icon.png" style="width: 3% !important"> Cutie de viteze : @Model.Product.CutieViteze
+            </div>
+            <div class="col-12 mt-3">
+                <img src="/images/icons/color-icon.png" style="width: 3% !important"> Culoare : @Model.Product.Culoare
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="card mb-2">
+    <div class="card-body">
+        <div class="card-text">
+            <h4>Detalii : </h4>
+            <p>@Html.Raw(Model.Product.Descriere)</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts
+    {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+    <script>
+        $(document).ready(function() {
+            // Initialize the carousel
+            $('.carousel').carousel({
+                interval: false
+            });
+
+            // Enable carousel controls
+            $('.carousel-control-prev').click(function(event) {
+                event.preventDefault();
+                $('.carousel').carousel('prev');
+            });
+
+            $('.carousel-control-next').click(function(event) {
+                event.preventDefault();
+                $('.carousel').carousel('next');
+            });
+        });
+    </script>
+        }

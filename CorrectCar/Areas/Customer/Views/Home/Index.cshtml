@@ -1,0 +1,94 @@
+﻿@using CorrectCar.Models
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<style>
+    /* CSS rules go here */
+    .dataTables_filter {
+        margin-bottom: 20px;
+    }
+
+    table.my-table {
+        background-color: white; /* Replace with desired color */
+    }
+
+    .table-striped tbody tr td {
+        vertical-align: middle;
+    }
+
+    thead {
+        background-color: transparent !important; /* Replace with desired color */
+    }
+
+    .text-wrap {
+        overflow: auto;
+        max-height: 100%;
+    }
+</style>
+
+
+
+<div class="container p-1 mt-4">
+
+<div class="card bg-dark text-white p-1" style="min-height: 35vh;">
+  <div class="card-body position-relative p-1">
+    <img src="/images/background/are-us-car-dealers-ready-for-tomorrow-rectangle.jpg" class="card-img position-absolute top-0 start-0" alt="car dealer" style="opacity: 0.2; object-fit: cover; height: 100%; width: 100%;">
+    <div class="text-wrap position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+      <div class="text-center" style="max-height: calc(100% - 2rem); overflow-y: auto;">
+        <h3 class="mb-2 mb-md-3">Găsește-ți mașină astăzi!</h3>
+        <p class="mb-2 mb-md-3">
+          Ești în căutarea unui vehicul second-hand de înaltă calitate? Dorești un proces de achiziție transparent și orientat către clienți? <br />
+          Nu mai căuta! Suntem aici pentru a face experiența ta de cumpărare a mașinii lipsită de stres și plăcută.<br />
+        </p>
+        <p class="card-text mb-2 mb-md-3">
+          Și când vine vorba de mărci, suntem pregătiți să te ajutăm.
+          De la modele de lux precum BMW și Mercedes-Benz la mărci japoneze de încredere precum Toyota și Honda, avem mașinile pe care le dorești la prețuri pe care le vei iubi.
+        </p>
+        <p class="card-text mb-2 mb-md-3">
+          De ce să mai aștepți? Contactează-ne astăzi pentru a începe călătoria ta de cumpărare a mașinii.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="card p-4 mt-4 mb-5">
+        <div class="col-12 p-3 ">
+            <h2 class="text-center" style="color:gold"> Autovehicule in stoc </h2>
+        </div>
+        <table id="tblData" class="table table-striped rounded " style="width:100%;--bs-table-accent-bg:transparent; ">
+            <thead class="">
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        Marca
+                    </th>
+                    <th>
+                        Model
+                    </th>
+                    <th>
+                        An de Fabricatie
+                    </th>
+                    <th>
+                        Pret
+                    </th>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+    <br/><br/><br/><br/><br/>
+
+</div>
+
+
+
+@section Scripts{
+    <script src="~/js/home.js"></script>
+
+}

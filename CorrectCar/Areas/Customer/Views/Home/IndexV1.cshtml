@@ -1,0 +1,68 @@
+﻿@using CorrectCar.Models
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="col-12 pt-5 pb-2">
+    <h2 class="text-center"> Masini in stoc </h2>
+</div>
+
+<div class="row justify-content-center pb-3">
+
+    @foreach (var obj in Model)
+    {
+        <div class="col-5 pt-3">
+            <div class="card w-100 h-100 d-flex rounded border border-secondary">
+                <img src="@obj.ListImageUrl" class="card-img-top img-fluid rounded-top" style="object-fit: cover; width: 100%; height: 100%;" />
+                <div class="card-body">
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-start">
+                                <h4>@obj.Marca @obj.Model</h4>
+                            </div>
+
+                            <div class="col-6 d-flex justify-content-end">
+                                <h4>@string.Format("{0:N2}", obj.Pret) €</h4>
+                            </div>
+                        </div>
+                        <div class="card p-3 mb-3">
+                            <div class="row">
+                                <div class="col-4 p-3 mb-3">
+                                    <img src="/images/icons/color-icon.png" class="w-25"> @obj.Culoare
+                                </div>
+                                <div class="col-4 p-3 mb-3">
+                                    <img src="/images/icons/mileage-icon.png" class="w-25"> @obj.Rulaj Km
+                                </div>
+                                <div class="col-4 p-3 mb-3">
+                                    <img src="/images/icons/hp-icon.png" class="w-25"> @obj.Putere Hp
+                                </div>
+                                <div class="col-4 p-3 mb-3">
+                                    <img src="/images/icons/fuel-icon.png" class="w-25"> @obj.Combustibil
+                                </div>
+                                <div class="col-4 p-3 mb-3">
+                                    <img src="/images/icons/gearbox-icon.png" class="w-25"> @obj.CutieViteze
+                                </div>
+                                <div class="col-4 p-3 mb-3">
+                                    <img src="/images/icons/date-icon.png" class="w-25"> @obj.AnFabricatie
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border ">
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@obj.Id">
+                        <div class="card-body text-center ">
+                            <span class="d-inline-block font-weight-bold">Detalii</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+@section Scripts{
+    <script src="~/js/product.js"></script>
+
+    }
