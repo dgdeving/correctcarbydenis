@@ -18,13 +18,14 @@ function loadDataTable() {
                         console.log(data);
                         return `
 
-                            <div style="position: relative;height: 15vh;">
-                                <img src="${data}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"/>
+                            <div style="position: relative;height: 15vh; width: 20vh">
+                                <img src="${data}" style=" top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"/>
                             </div>
                         `
                     },
                     "className": "text-center",
-                    "width": "20%"
+                    "width": "20%",
+                    "responsivePriority": 1
                 },
                 { "data": "marca", "width": "20%","className": "text-center" },
                 { "data": "model", "width": "20%", "className": "text-center" },
@@ -45,7 +46,8 @@ function loadDataTable() {
                 { "orderable": false, "targets": 0 }
             ],
             "order": [[3, "asc"]]
-        });
+        }
+    );
 
     //// Add click listener to cells instead of rows
     //$('#tblData tbody').on('click', 'img', function () {

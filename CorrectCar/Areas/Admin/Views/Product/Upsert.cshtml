@@ -14,9 +14,6 @@
     }
 
 
-
-
-
     <div class="row">
         <div class="col-8 pt-4">
             <div class="border p-3" style="margin-top: 10px;">
@@ -73,7 +70,7 @@
                     </div>
                     <div class="mb-3 col-6">
                         <label asp-for="Product.Culoare"></label>
-                        <input asp-for="Product.Culoare"  class="form-control"/>
+                        <input asp-for="Product.Culoare" class="form-control" />
                         <span asp-validation-for="Product.Culoare" class="text-danger"></span>
                     </div>
                     <div class="mb-3 col-12">
@@ -95,7 +92,7 @@
 
 
 
-                <button type="submit" class="btn btn-outline-primary" style="width:150px">Creeaza</button>
+                <button type="submit" class="btn btn-outline-primary" style="width:150px">@(Model.Product.Id!=0?"Updateaza":"Creaza")</button>
                 <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary" style="width:200px">
                     Produse
                 </a>
@@ -105,7 +102,7 @@
         <div id="preview" class="col-4 pt-4">
             @foreach (ImageURL image in Model.ImagesList)
             {
-                <img style="width:150px;margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" src="@image.ImageUrl">
+                <img style="width:150px;margin-right: 10px; margin-top: 10px; margin-bottom: 10px; max-width:100%" src="@image.ImageUrl">
             }
         </div>
 
@@ -114,8 +111,7 @@
 
 </form>
 <br />
-<br />
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide pb-5" data-ride="carousel">
     <div class="carousel-inner">
 
         @foreach (ImageURL image in Model.ImagesList)
@@ -203,10 +199,7 @@
                 img.style.marginRight = '10px';
                 img.style.marginTop = '10px';
                 img.style.marginBottom = '10px';
-
                 //var slideshow = createSlideshow(images);
-
-
                 preview.appendChild(img);
 
             }
@@ -227,90 +220,6 @@
                 $('.carousel').carousel('next');
             });
         });
-
-
-                                                //function createSlideshow(images) {
-                                                //    var slideshowContainer = document.createElement('div');
-                                                //    slideshowContainer.classList.add('slideshow-container');
-
-                                                //    for (var i = 0; i < images.length; i++) {
-                                                //        var slide = document.createElement('div');
-                                                //        slide.classList.add('mySlides');
-
-                                                //        var img = document.createElement('img');
-                                                //        img.src = images[i];
-                                                //        img.style.width = '100%';
-
-                                                //        slide.appendChild(img);
-                                                //        slideshowContainer.appendChild(slide);
-                                                //    }
-
-                                                //    var prevButton = document.createElement('a');
-                                                //    prevButton.classList.add('prev');
-                                                //    prevButton.innerHTML = '&#10094;';
-
-                                                //    var nextButton = document.createElement('a');
-                                                //    nextButton.classList.add('next');
-                                                //    nextButton.innerHTML = '&#10095;';
-
-                                                //    slideshowContainer.appendChild(prevButton);
-                                                //    slideshowContainer.appendChild(nextButton);
-
-                                                //    // Set up slideshow behavior
-                                                //    var slideIndex = 1;
-                                                //    showSlides(slideIndex);
-
-                                                //    function plusSlides(n) {
-                                                //        showSlides(slideIndex += n);
-                                                //    }
-
-                                                //    function currentSlide(n) {
-                                                //        showSlides(slideIndex = n);
-                                                //    }
-
-                                                //    function showSlides(n) {
-                                                //        var i;
-                                                //        var slides = document.getElementsByClassName('mySlides');
-                                                //        var dots = document.getElementsByClassName('dot');
-
-                                                //        if (n > slides.length) {
-                                                //            slideIndex = 1;
-                                                //        }
-
-                                                //        if (n < 1) {
-                                                //            slideIndex = slides.length;
-                                                //        }
-
-                                                //        for (i = 0; i < slides.length; i++) {
-                                                //            slides[i].style.display = 'none';
-                                                //        }
-
-                                                //        for (i = 0; i < dots.length; i++) {
-                                                //            dots[i].className = dots[i].className.replace(' active', '');
-                                                //        }
-
-                                                //        slides[slideIndex - 1].style.display = 'block';
-                                                //        dots[slideIndex - 1].className += ' active';
-                                                //    }
-
-                                                //    // Add dot indicators
-                                                //    var dotContainer = document.createElement('div');
-                                                //    dotContainer.classList.add('dot-container');
-
-                                                //    for (var i = 0; i < images.length; i++) {
-                                                //        var dot = document.createElement('span');
-                                                //        dot.classList.add('dot');
-                                                //        dot.addEventListener('click', function() {
-                                                //            currentSlide(i + 1);
-                                                //        });
-
-                                                //        dotContainer.appendChild(dot);
-                                                //    }
-
-                                                //    slideshowContainer.appendChild(dotContainer);
-
-                                                //    return slideshowContainer;
-                                                //}
 
     </script>
     }

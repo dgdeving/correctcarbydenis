@@ -15,38 +15,34 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
 
 </head>
-<body >
+<body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark bg-primary ">
             <div class="container-fluid">
-
-                <img src="/images/logo/Logo3-.png" style="width: 12% !important; " class="navbar-brand p-0" />
-
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <a class="navbar-brand p-0" href="@Url.Action("Index", "Home", new { area = "Customer" })">
+                    <img src="/images/logo/Logo3-.png" style="max-width: 22vh!important; " class="w-100" />
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse me-auto">
                     <ul class="navbar-nav flex-grow-1">
-
                         <li class="nav-item">
-                            <a class="nav-link" style="color:gold" asp-area="" asp-controller="Home" asp-action="Index">Garaj</a>
+                            <a class="nav-link" style="color:gold" asp-area="Customer" asp-controller="Home" asp-action="Index">Garaj</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Content Management</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Admin Portal</a>
-                            </div>
-                        </li>
+                            @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="Index">Administrare</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container pb-2">
         <main role="main" class="pb-3">
             <partial name="_Notifications" />
             <br><br>
@@ -54,22 +50,22 @@
         </main>
     </div>
 
-<footer class="footer bg-primary fixed-bottom " >
-  <div class="container">
-    <div class="row align-items-center justify-content-between">
-      <div class="col-sm-12 col-md-auto text-center text-md-left">
-        <div style="color:gold">&copy; CorrectCar by Denis</div>
-      </div>
-      <div class="col-sm-12 col-md-auto mt-3 mt-sm-0 text-center text-md-left">
-        <a asp-area="" asp-controller="Home" asp-action="Privacy" style="text-decoration: none;">Politică de confidențialitate</a>
-        <a asp-area="" asp-controller="Home" asp-action="Privacy" style="text-decoration: none;">Termeni si condiții</a>
-      </div>
-      <div class="col-sm-12 col-md-auto text-center text-md-right">
-        <partial name="_LoginPartial" />
-      </div>
-    </div>
-  </div>
-</footer>
+    <footer class="footer bg-primary fixed-bottom p-1 mt-auto">
+        <div class="container lh-base">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-sm-12 col-md-auto text-center text-md-left">
+                    <div style="color:gold ">&copy; CorrectCar by Denis</div>
+                </div>
+                <div class="col-sm-12 col-md-auto text-center text-md-left mt-3 mt-md-0">
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy" style="text-decoration: none;">Politică de confidențialitate</a>
+                    <!--<a asp-area="" asp-controller="Home" asp-action="Privacy" style="text-decoration: none;">Termeni si condiții</a>-->
+                </div>
+                <div class="col-sm-12 col-md-auto  text-center text-md-right mt-3 mt-md-0">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

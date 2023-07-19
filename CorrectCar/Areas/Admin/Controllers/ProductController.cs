@@ -1,12 +1,14 @@
 ﻿using CorrectCar.Models;
 using CorrectCar.Models.ViewModels;
 using CorrectCar.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace CorrectCar.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
